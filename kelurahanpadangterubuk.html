@@ -344,7 +344,7 @@ body{
     <a href="#">Unduh Berkas</a>
   </div>
   <a href="javascript:void(0)" onclick="toggleSub()">Lembaga ▼</a>
-  <div class="submenu" id="submenuPelayanan">
+  <div class="submenu" id="submenuLembaga">
     <a href="#">RW (Rukun Warga)</a>
     <a href="#">RT (Rukun Tetangga)</a>
     <a href="#">LPM (Lembaga Pemberdayaan Masyarakat)</a>
@@ -365,6 +365,7 @@ function closeMenu(){
 }
 function toggleSub(){
   const sub=document.getElementById("submenuPelayanan");
+  const sub=document.getElementById("submenuLembaga");
   sub.style.display=sub.style.display==="block"?"none":"block";
 }
 window.addEventListener("scroll",()=>{
