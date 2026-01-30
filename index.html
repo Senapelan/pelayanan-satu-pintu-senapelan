@@ -9,151 +9,199 @@
 <link rel="icon" type="image/png" sizes="32x32" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Logo_lambang_kota_pekanbaru.png/960px-Logo_lambang_kota_pekanbaru.png">
     
 <style>
-/* RESET */
+
+/* =========================
+   RESET DASAR
+   ========================= */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
+    margin: 0;                 /* Hilangkan margin default browser */
+    padding: 0;                /* Hilangkan padding default */
+    box-sizing: border-box;    /* Hitung width/height termasuk padding & border */
+    font-family: 'Segoe UI', sans-serif; /* Font utama halaman */
 }
 
+/* =========================
+   BODY
+   ========================= */
 body {
-    color: #fff;
-    overflow-x: hidden;
+    color: #fff;               /* Warna teks default putih */
+    overflow-x: hidden;        /* Cegah scroll horizontal */
 }
 
-/* VIDEO BACKGROUND */
+/* =========================
+   VIDEO BACKGROUND
+   ========================= */
 .video-bg {
-    position: fixed;
+    position: fixed;           /* Video tetap di layar saat scroll */
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -2;
+    width: 100%;               /* Lebar penuh layar */
+    height: 100%;              /* Tinggi penuh layar */
+    z-index: -2;               /* Letakkan di paling belakang */
 }
 
 .video-bg video {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    filter: blur(2px) brightness(1);
+    object-fit: cover;         /* Video menutupi layar tanpa distorsi */
+    filter: blur(2px) brightness(1); 
+    /* blur = tingkat blur video
+       brightness = tingkat terang video */
 }
 
-/* OVERLAY */
+/* =========================
+   OVERLAY GELAP DI ATAS VIDEO
+   ========================= */
 .overlay {
     position: fixed;
-    inset: 0;
-    background: linear-gradient(120deg, rgba(0,30,60,0.6), rgba(0,0,0,0.7));
-    z-index: -1;
+    inset: 0;                  /* Sama dengan top:0; right:0; bottom:0; left:0 */
+    background: linear-gradient(
+        120deg,
+        rgba(0,30,60,0.6),     /* Warna biru gelap transparan */
+        rgba(0,0,0,0.7)        /* Hitam transparan */
+    );
+    z-index: -1;               /* Di atas video, di bawah konten */
 }
 
-/* RUNNING TEXT */
+/* =========================
+   RUNNING TEXT / MARQUEE
+   ========================= */
 .marquee {
-    background: rgba(0,0,0,0.4);
-    padding: 10px 0;
-    overflow: hidden;
-    white-space: nowrap;
+    background: rgba(0,0,0,0.4); /* Background transparan hitam */
+    padding: 10px 0;             /* Jarak atas & bawah */
+    overflow: hidden;            /* Sembunyikan teks di luar area */
+    white-space: nowrap;         /* Teks tidak turun baris */
 }
 
 .marquee span {
     display: inline-block;
-    padding-left: 100%;
-    animation: marquee 18s linear infinite;
+    padding-left: 100%;          /* Mulai dari luar layar kanan */
+    animation: marquee 18s linear infinite; 
+    /* 18s = durasi jalan teks */
     font-weight: 500;
-    color: #9fdcff;
+    color: #9fdcff;              /* Warna teks biru muda */
 }
 
+/* Animasi teks berjalan */
 @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-100%); } /* Jalan ke kiri */
 }
 
-/* HEADER */
+/* =========================
+   HEADER JUDUL
+   ========================= */
 header {
-    text-align: center;
-    padding: 50px 20px 30px;
+    text-align: center;          /* Teks rata tengah */
+    padding: 50px 20px 30px;     /* Atas | kiri-kanan | bawah */
 }
 
 header h1 {
-    font-size: 2.5rem;
-    text-shadow: 0 0 15px #00bfff;
+    font-size: 2.5rem;           /* Ukuran judul utama */
+    text-shadow: 0 0 15px #00bfff; 
+    /* Efek glow biru */
 }
 
 header p {
     margin-top: 10px;
-    font-style: italic;
-    color: #cfefff;
+    font-style: italic;          /* Teks miring */
+    color: #cfefff;              /* Warna lebih soft */
 }
 
-/* GRID MENU */
+/* =========================
+   CONTAINER UTAMA
+   ========================= */
 .container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 40px 20px 80px;
+    max-width: 1200px;           /* Lebar maksimal konten */
+    margin: auto;                /* Tengah secara horizontal */
+    padding: 40px 20px 80px;     /* Jarak dalam */
 }
 
+/* =========================
+   GRID MENU
+   ========================= */
 .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 di atas, 3 di bawah */
-    column-gap: 80px; /* jarak kiri-kanan */
-    row-gap: 80px;    /* JARAK ATAS–BAWAH BARIS */
-}
-    
-.card {
-    text-align: center;
-    transition: 0.4s ease;
+    grid-template-columns: repeat(3, 1fr); 
+    /* 3 kolom dengan lebar sama */
+
+    column-gap: 80px;            /* Jarak kiri–kanan antar kartu */
+    row-gap: 80px;               /* Jarak atas–bawah antar baris */
 }
 
+/* =========================
+   CARD / MENU ITEM
+   ========================= */
+.card {
+    text-align: center;          /* Konten rata tengah */
+    transition: 0.4s ease;      /* Animasi hover halus */
+}
+
+/* Gambar di dalam card */
 .card img {
     width: 100%;
-    max-height: 180px;
-    object-fit: contain;
-    filter: drop-shadow(0 0 12px #00bfff);
+    max-height: 180px;           /* Tinggi maksimal gambar */
+    object-fit: contain;         /* Gambar tidak terpotong */
+    filter: drop-shadow(0 0 12px #00bfff); 
+    /* Efek glow biru */
     transition: 0.4s;
 }
 
+/* Efek hover gambar */
 .card:hover img {
-    transform: scale(1.08);
-    filter: drop-shadow(0 0 25px #00ffff);
+    transform: scale(1.08);      /* Zoom sedikit */
+    filter: drop-shadow(0 0 25px #00ffff); 
 }
 
+/* Link di dalam card */
 .card a {
-    text-decoration: none;
-    color: #fff;
+    text-decoration: none;       /* Hilangkan garis bawah */
+    color: #fff;                 /* Warna teks putih */
 }
 
+/* Judul menu */
 .card h3 {
     margin-top: 15px;
     font-weight: 500;
-    color: #e8f7ff;
+    color: #e8f7ff;              /* Warna biru terang */
 }
 
-/* ANIMASI MASUK */
+/* =========================
+   ANIMASI MASUK CARD
+   ========================= */
 .card {
-    opacity: 0;
-    transform: translateY(30px);
+    opacity: 0;                  /* Awalnya transparan */
+    transform: translateY(30px); /* Turun sedikit */
     animation: fadeUp 1s ease forwards;
 }
 
-.card:nth-child(1){animation-delay:.1s}
-.card:nth-child(2){animation-delay:.2s}
-.card:nth-child(3){animation-delay:.3s}
-.card:nth-child(4){animation-delay:.4s}
-.card:nth-child(5){animation-delay:.5s}
-.card:nth-child(6){animation-delay:.6s}
+/* Delay animasi per card */
+.card:nth-child(1){ animation-delay:.1s }
+.card:nth-child(2){ animation-delay:.2s }
+.card:nth-child(3){ animation-delay:.3s }
+.card:nth-child(4){ animation-delay:.4s }
+.card:nth-child(5){ animation-delay:.5s }
+.card:nth-child(6){ animation-delay:.6s }
 
+/* Keyframe animasi naik */
 @keyframes fadeUp {
     to {
-        opacity: 1;
-        transform: translateY(0);
+        opacity: 1;              /* Muncul penuh */
+        transform: translateY(0);/* Kembali ke posisi normal */
     }
 }
 
-/* RESPONSIVE */
+/* =========================
+   RESPONSIVE MOBILE
+   ========================= */
 @media(max-width:600px){
-    header h1 { font-size: 2rem; }
+    header h1 { 
+        font-size: 2rem;         /* Perkecil judul di layar kecil */
+    }
 }
+
 </style>
+
 </head>
 
 <body>
