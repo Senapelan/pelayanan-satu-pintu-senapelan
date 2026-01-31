@@ -82,17 +82,37 @@
 </footer>
 
 <!-- ================= MOBILE MENU ================= -->
+<div class="menu-overlay"></div>
+
 <div class="mobile-menu" id="mobileMenu">
+
+  <!-- header mobile menu -->
+  <div class="mobile-menu-header">
+    <img src="logo-pemko.png" alt="Logo Pemko">
+    <div class="mobile-menu-title">
+      <strong>Kecamatan Senapelan</strong>
+      <span>Kota Pekanbaru</span>
+    </div>
+  </div>
+
+  <!-- tombol close (disembunyikan oleh CSS, tetap aman) -->
   <div class="close" onclick="closeMenu()">✕</div>
-  <a href="#">Beranda</a>
-  <a href="javascript:void(0)" onclick="toggleSub('submenuPelayanan')">Pelayanan ▼</a>
-<div class="submenu" id="submenuPelayanan">
+
+  <a href="#" class="active">Beranda</a>
+
+  <a href="javascript:void(0)" onclick="toggleSub('submenuPelayanan')">
+    Pelayanan
+  </a>
+  <div class="submenu" id="submenuPelayanan">
     <a href="#">SI CEPAT</a>
     <a href="#">Persyaratan</a>
     <a href="#">Unduh Berkas</a>
   </div>
-  <a href="javascript:void(0)" onclick="toggleSub('submenuLembaga')">Lembaga ▼</a>
-<div class="submenu" id="submenuLembaga">
+
+  <a href="javascript:void(0)" onclick="toggleSub('submenuLembaga')">
+    Lembaga
+  </a>
+  <div class="submenu" id="submenuLembaga">
     <a href="#">RW (Rukun Warga)</a>
     <a href="#">RT (Rukun Tetangga)</a>
     <a href="#">LPM (Lembaga Pemberdayaan Masyarakat)</a>
@@ -100,9 +120,12 @@
     <a href="#">Karang Taruna</a>
     <a href="#">LPS (Lembaga Pengelola Sampah)</a>
   </div>
+
   <a href="#profil">Profil</a>
   <a href="#kontak">Kontak</a>
+
 </div>
+
 
 <!-- ================= Java Script ================= -->
 <script src="assets/js/main.js"></script>
