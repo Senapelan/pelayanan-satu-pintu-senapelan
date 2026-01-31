@@ -1,27 +1,23 @@
+const mobileMenu = document.getElementById("mobileMenu");
+const overlay = document.querySelector(".menu-overlay");
+const menuBtn = document.querySelector(".menu-btn");
+
+/* buka menu */
 function openMenu(){
-  document.getElementById("mobileMenu").classList.add("active");
-  document.querySelector(".menu-overlay").classList.add("active");
+  mobileMenu.classList.add("active");
+  overlay.classList.add("active");
 }
 
+/* tutup menu */
 function closeMenu(){
-  document.getElementById("mobileMenu").classList.remove("active");
-  document.querySelector(".menu-overlay").classList.remove("active");
+  mobileMenu.classList.remove("active");
+  overlay.classList.remove("active");
 }
 
-/* klik luar = tutup menu */
-document.addEventListener("click", function(e){
-  const menu = document.getElementById("mobileMenu");
-  const btn  = document.querySelector(".menu-btn");
+/* klik overlay = tutup */
+overlay.addEventListener("click", closeMenu);
 
-  if(
-    menu.classList.contains("active") &&
-    !menu.contains(e.target) &&
-    !btn.contains(e.target)
-  ){
-    closeMenu();
-  }
-});
-
+/* toggle submenu */
 function toggleSub(id){
   const sub = document.getElementById(id);
 
@@ -35,5 +31,8 @@ function toggleSub(id){
 }
 
 /* header scroll */
-window.addEventListener("scroll",()=>{
-  document.getE
+window.addEventListener("scroll", () => {
+  document
+    .getElementById("header")
+    .classList.toggle("scrolled", window.scrollY > 50);
+});
