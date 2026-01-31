@@ -57,43 +57,72 @@ body{
   width:36px;
 }
 
-/* ================= DESKTOP NAV ================= */
+/* ================= NAV DESKTOP ================= */
 .nav-desktop{
   display:flex;
-  gap:20px;
+  gap:30px;
+  align-items:center;
 }
 
 .nav-desktop a{
   color:#fff;
   text-decoration:none;
-  font-size:14px;
+  position:relative;
+  font-weight:500;
 }
 
+/* ===== NAV ITEM ===== */
 .nav-item{
   position:relative;
+  height:100%;
+  display:flex;
+  align-items:center;
 }
 
+/* ===== DROPDOWN MENYATU (FIXED) ===== */
 .dropdown{
   position:absolute;
   top:100%;
   left:0;
-  background:#fff;
-  min-width:220px;
-  border-radius:8px;
-  box-shadow:0 10px 30px rgba(0,0,0,.15);
-  display:none;
-  overflow:hidden;
+  background:#0f1b2d;
+  min-width:240px;
+  padding:12px;
+  border-radius:0 0 14px 14px;
+  box-shadow:0 25px 45px rgba(0,0,0,.45);
+  opacity:0;
+  visibility:hidden;
+  transition:.25s ease;
+  z-index:3000;
 }
 
-.nav-item:hover .dropdown{
-  display:block;
+/* AKTIF SAAT HOVER */
+.nav-item:hover .dropdown,
+.dropdown:hover{
+  opacity:1;
+  visibility:visible;
 }
 
+/* ===== ITEM SUB MENU ===== */
 .dropdown a{
-  display:block;
-  padding:10px 14px;
-  color:#222;
-  font-size:14px;
+  display:flex;
+  align-items:center;
+  padding:14px 16px;
+  margin-bottom:8px;
+  background:linear-gradient(180deg,#111,#1a1a1a);
+  color:#fff;
+  border-radius:10px;
+  font-weight:500;
+  text-decoration:none;
+  transition:.25s;
+}
+
+.dropdown a:last-child{
+  margin-bottom:0;
+}
+
+.dropdown a:hover{
+  background:#1e6bff;
+  transform:translateX(6px);
 }
 
 /* ================= MENU BUTTON ================= */
