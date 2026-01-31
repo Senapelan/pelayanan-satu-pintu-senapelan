@@ -10,7 +10,7 @@ body{
   color:#222;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 .header{
   position:fixed;
   top:0;
@@ -24,6 +24,12 @@ body{
   backdrop-filter:blur(10px);
   color:#fff;
   z-index:1000;
+  transition:.3s;
+}
+
+.header.scrolled{
+  background:#0f1b2d;
+  box-shadow:0 5px 20px rgba(0,0,0,.35);
 }
 
 .logo{
@@ -37,49 +43,131 @@ body{
   height:36px;
 }
 
+/* ================= NAV DESKTOP ================= */
 .nav-desktop{
   display:flex;
-  gap:25px;
+  gap:30px;
+  align-items:center;
 }
 
 .nav-desktop a{
   color:#fff;
   text-decoration:none;
+  position:relative;
+  font-weight:500;
 }
 
+/* ===== NAV ITEM ===== */
+.nav-item{
+  position:relative;
+  height:100%;
+  display:flex;
+  align-items:center;
+}
+
+/* ===== DROPDOWN MENYATU (FIXED) ===== */
+.dropdown{
+  position:absolute;
+  top:100%;
+  left:0;
+  background:#0f1b2d;
+  min-width:240px;
+  padding:12px;
+  border-radius:0 0 14px 14px;
+  box-shadow:0 25px 45px rgba(0,0,0,.45);
+  opacity:0;
+  visibility:hidden;
+  transition:.25s ease;
+  z-index:3000;
+}
+
+/* AKTIF SAAT HOVER */
+.nav-item:hover .dropdown,
+.dropdown:hover{
+  opacity:1;
+  visibility:visible;
+}
+
+/* ===== ITEM SUB MENU ===== */
+.dropdown a{
+  display:flex;
+  align-items:center;
+  padding:14px 16px;
+  margin-bottom:8px;
+  background:linear-gradient(180deg,#111,#1a1a1a);
+  color:#fff;
+  border-radius:10px;
+  font-weight:500;
+  text-decoration:none;
+  transition:.25s;
+}
+
+.dropdown a:last-child{
+  margin-bottom:0;
+}
+
+.dropdown a:hover{
+  background:#1e6bff;
+  transform:translateX(6px);
+}
+
+/* ================= BURGER ================= */
 .menu-btn{
   font-size:28px;
   cursor:pointer;
   display:none;
+  color:#fff;
 }
 
-/* HERO */
-.hero{
+/* ================= HERO VIDEO ================= */
+.hero-video{
+  position:relative;
   height:100vh;
-  background:
-    linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
-    url("https://images.unsplash.com/photo-1523217582562-09d0def993a6");
-  background-size:cover;
-  background-position:center;
+  overflow:hidden;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
 }
 
-.hero-content h1{
+.hero-video video{
+  position:absolute;
+  top:50%;
+  left:50%;
+  min-width:100%;
+  min-height:100%;
+  transform:translate(-50%, -50%);
+  object-fit:cover;
+  z-index:1;
+}
+
+.hero-video .overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  z-index:2;
+}
+
+.hero-video .hero-content{
+  position:relative;
+  z-index:3;
   color:#fff;
+  max-width:900px;
+  padding:20px;
+}
+
+.hero-video h1{
   font-size:42px;
   font-weight:700;
 }
 
-.hero-content span{
+.hero-video span{
   color:#4da3ff;
 }
 
-.hero-content p{
-  color:#ddd;
+.hero-video p{
   margin-top:15px;
+  color:#ddd;
 }
 
 .btn-primary{
@@ -93,49 +181,27 @@ body{
   font-weight:600;
 }
 
-/* SECTION */
+/* ================= SECTION ================= */
 .section{
   padding:80px 20px;
   max-width:1100px;
   margin:auto;
 }
 
-.section h2{
-  text-align:center;
-  margin-bottom:40px;
-}
-
 .section.light{
   background:#fff;
+}
+
+.section h2{
+  text-align:center;
+  margin-bottom:25px;
 }
 
 .text-center{
   text-align:center;
 }
 
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
-  gap:20px;
-}
-
-.card{
-  background:#fff;
-  padding:30px;
-  text-align:center;
-  border-radius:14px;
-  text-decoration:none;
-  color:#222;
-  box-shadow:0 10px 25px rgba(0,0,0,.08);
-  transition:.3s;
-}
-
-.card:hover{
-  transform:translateY(-6px);
-}
-
-/* FOOTER */
+/* ================= FOOTER ================= */
 .footer{
   background:#111;
   color:#fff;
@@ -143,14 +209,14 @@ body{
   padding:25px;
 }
 
-/* MOBILE MENU */
+/* ================= MOBILE MENU ================= */
 .mobile-menu{
   position:fixed;
   top:0;
   left:-100%;
   width:280px;
   height:100%;
-  background:#111;
+  background:#0f1b2d;
   padding:25px;
   transition:.35s;
   z-index:2000;
@@ -165,7 +231,7 @@ body{
   color:#fff;
   text-decoration:none;
   padding:14px 0;
-  border-bottom:1px solid #222;
+  border-bottom:1px solid rgba(255,255,255,.1);
 }
 
 .submenu{
@@ -177,15 +243,11 @@ body{
   text-align:right;
   font-size:26px;
   cursor:pointer;
+  color:#fff;
 }
 
-/* RESPONSIVE */
+/* ================= RESPONSIVE ================= */
 @media(max-width:900px){
-  .nav-desktop{display:none}
-  .menu-btn{display:block}
-}
-
-.nav-desktop a.active{
-  color:#4da3ff;
-  border-bottom:2px solid #4da3ff;
+  .nav-desktop{display:none;}
+  .menu-btn{display:block;}
 }
