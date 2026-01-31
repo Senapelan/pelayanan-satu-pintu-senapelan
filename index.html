@@ -150,7 +150,7 @@ header p {
 
 /* CARD UTAMA DI ATAS */
 .card-utama {
-    max-width: 320px;
+    
     margin: 0 auto 80px; /* tengah + jarak ke grid bawah */
     text-align: center;
 }
@@ -158,7 +158,7 @@ header p {
 /* GRID CARD BAWAH */
 .grid {
     display: grid;
-    
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 80px;
     row-gap: 80px;    /* JARAK ATAS–BAWAH BARIS */
     justify-items: center; /* ⬅️ INI KUNCINYA gambar posisi tengah jika tidk bukup 3 */
